@@ -196,8 +196,9 @@ struct Device {
 IPAddress deviceIP;
 
 bool isAP;
-bool isErrorConn = true;
+//bool isErrorConn = true;
 bool isCheckIn = false;
+int errorConnCounter = true;
 
 #ifdef SD_CS_PIN
 bool isSD, errorSD;
@@ -523,7 +524,8 @@ void drawDisplay(OLEDDisplay *display, int frame) {
 		lastMessage = "";
 	}
 	else {
-		if(isErrorConn)
+		//if(isErrorConn)
+		if(errorConnCounter)
 			display->drawString(0, 48, "CONN ERROR");
 	}
 
@@ -1125,7 +1127,8 @@ void setup() {
 		//	message += "<h2>ALARM: LEVEL MAX</h2>";
 		//if(bitRead(devices[DEV_ALARM_MIN].flags, OUTPUT_BIT))
 		//	message += "<h2>ALARM: LEVEL MIN</h2>";
-		if(isErrorConn)
+		//if(isErrorConn)
+		if(errorConnCounter)
 			message += "<h2>ALARM:INTERNET CONNECTION ERROR</h2>";
 
 #ifdef SD_CS_PIN
@@ -1593,13 +1596,22 @@ void loopComm(void *pvParameters) {
 #endif
 
 		digitalWrite(LED0_PIN, false);
-		isErrorConn = true;
 
 		DRAWMESSAGE(display, "BOT CONN...");
 		//isErrorConn = !bot.checkForOkResponse(String("https://api.telegram.org/bot") + botToken);
 		//Serial.println(String("https://api.telegram.org/bot") + botToken);
-		isErrorConn = !bot.getMe();
-		if(isErrorConn)
+
+		//isErrorConn = true;
+		//isErrorConn = !bot.getMe();
+		//if(isErrorConn)
+		//	isCheckIn = false;
+
+		if(bot.getMe())
+			errorConnCounter = 0;
+		else
+			errorConnCounter++;
+
+		if(errorConnCounter > 2)
 			isCheckIn = false;
 
 		int numNewMessages = bot.getUpdates(bot.last_message_received + 1);
@@ -1643,7 +1655,8 @@ void loopComm(void *pvParameters) {
 			numNewMessages = bot.getUpdates(bot.last_message_received + 1);
 		}
 
-		if(botChatId[0] && !isErrorConn) {
+		//if(botChatId[0] && !isErrorConn) {
+		if(botChatId[0] && errorConnCounter == 0) {
 			String msg = "";
 
 			if(!isCheckIn) {
@@ -1918,7 +1931,7 @@ void loop() {
 		isAlarm |= bitRead(devices[i].flags, OUTPUT_BIT);
 		isUnack |= bitRead(devices[i].flags, UNACK_BIT);
 	}
-	isAlarm |= isErrorConn;
+	isAlarm |= errorConnCounter; //isErrorConn;
 
 	if(!digitalRead(CONFIG_WIFI_PIN)) {
 		screenSaverMillis = millis();
@@ -1937,7 +1950,8 @@ void loop() {
 #endif
 
 #ifdef LED0_PIN
-	if(millis() - ledMillis > (isErrorConn ? 125 : 1000)) {
+	//if(millis() - ledMillis > (isErrorConn ? 125 : 1000)) {
+	if(millis() - ledMillis > (errorConnCounter > 2 ? 125 : 1000)) {
 		ledMillis = millis();
 		digitalWrite(LED0_PIN, !digitalRead(LED0_PIN));
 	}
