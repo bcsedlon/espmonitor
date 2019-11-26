@@ -198,7 +198,7 @@ IPAddress deviceIP;
 bool isAP;
 //bool isErrorConn = true;
 bool isCheckIn = false;
-int errorConnCounter = true;
+int errorConnCounter = 0;
 
 #ifdef SD_CS_PIN
 bool isSD, errorSD;
@@ -1642,6 +1642,9 @@ void loopComm(void *pvParameters) {
 				msg += "\n";
 
 				for(int i = 0; i < DEVICES_NUM; i++) {
+					if(strlen(devices[i].name) == 0)
+						continue;
+
 					msg += String(char(i + 65)) + ":" + devices[i].name + " " + deviceToString(devices[i]) + " ";
 					if(i < DEVICES_DIGITAL_NUM)
 						msg += String(bitRead(devices[i].flags, MANUAL_BIT));
@@ -1665,6 +1668,9 @@ void loopComm(void *pvParameters) {
 			}
 
 			for(int i = 0; i < DEVICES_NUM; i++) {
+				if(strlen(devices[i].name) == 0)
+						continue;
+
 				if(bitRead(devices[i].flags, UNACK_BIT)) {
 					msg += String(char(i + 65)) + ":" + devices[i].name + " " + deviceToString(devices[i]) + " ";
 					if(i < DEVICES_DIGITAL_NUM)
@@ -1968,11 +1974,10 @@ void loop() {
 			//delay(100);
 			//Serial.println(val);
 			if(val == -127.0) {
-				devices[i].par4++;
-				if(devices[i].par4 > 15) {
+				if(devices[i].par4 > 2)
 					devices[i].val = val;
-					devices[i].par4 = 15;
-				}
+				else
+					devices[i].par4++;
 			}
 			else {
 				devices[i].val = val;
