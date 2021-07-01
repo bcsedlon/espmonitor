@@ -1357,7 +1357,7 @@ void setup() {
 
 		message += "<hr><button type=submit name=cmd value=setapi>SET API!</button>";
 		message += "</form>";
-
+		message += __DATE__;
 		message += htmlFooter;
 		httpServer.send(200, "text/html", message);
 	});
