@@ -34,7 +34,8 @@
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/espmonitor-esp32/libraries/WiFi/src}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/espmonitor-esp32/libraries/WiFiClientSecure/src}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/espmonitor-esp32/libraries/Wire/src}&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/espmonitor-esp32/libraries/FreeRTOS/src}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/espmonitor-esp32/libraries/UniversalTelegramBot/src}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/espmonitor-esp32/libraries/ArduinoJson/src}&quot;"/>
 								</option>
 								<inputType id="io.sloeber.compiler.cpp.sketch.input.144614482" name="CPP source files" superClass="io.sloeber.compiler.cpp.sketch.input"/>
 							</tool>
@@ -55,7 +56,8 @@
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/espmonitor-esp32/libraries/WiFi/src}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/espmonitor-esp32/libraries/WiFiClientSecure/src}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/espmonitor-esp32/libraries/Wire/src}&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/espmonitor-esp32/libraries/FreeRTOS/src}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/espmonitor-esp32/libraries/UniversalTelegramBot/src}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/espmonitor-esp32/libraries/ArduinoJson/src}&quot;"/>
 								</option>
 								<inputType id="io.sloeber.compiler.c.sketch.input.71563451" name="C Source Files" superClass="io.sloeber.compiler.c.sketch.input"/>
 							</tool>
@@ -76,7 +78,8 @@
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/espmonitor-esp32/libraries/WiFi/src}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/espmonitor-esp32/libraries/WiFiClientSecure/src}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/espmonitor-esp32/libraries/Wire/src}&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/espmonitor-esp32/libraries/FreeRTOS/src}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/espmonitor-esp32/libraries/UniversalTelegramBot/src}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/espmonitor-esp32/libraries/ArduinoJson/src}&quot;"/>
 								</option>
 								<inputType id="io.sloeber.compiler.S.sketch.input.1071049195" name="Assembly source files" superClass="io.sloeber.compiler.S.sketch.input"/>
 							</tool>
@@ -87,7 +90,7 @@
 						</toolChain>
 					</folderInfo>
 					<sourceEntries>
-						<entry excluding="libraries/OneWire/util|libraries/OneWire/docs|libraries/Wire/doc|libraries/WiFiManager/travis|libraries/?*/**/?xamples/**|libraries/?*/**/?xtras/**|libraries/?*/**/test*/**|libraries/?*/**/third-party/**|libraries/**/._*|libraries/?*/utility/*/*" flags="VALUE_WORKSPACE_PATH" kind="sourcePath" name=""/>
+						<entry excluding="libraries/UniversalTelegramBot/scripts|libraries/OneWire/util|libraries/OneWire/docs|libraries/Wire/doc|libraries/WiFiManager/travis|libraries/?*/**/?xamples/**|libraries/?*/**/?xtras/**|libraries/?*/**/test*/**|libraries/?*/**/third-party/**|libraries/**/._*|libraries/?*/utility/*/*" flags="VALUE_WORKSPACE_PATH" kind="sourcePath" name=""/>
 					</sourceEntries>
 				</configuration>
 			</storageModule>

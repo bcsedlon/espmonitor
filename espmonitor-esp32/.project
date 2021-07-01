@@ -42,6 +42,11 @@
 			<locationURI>ECLIPSE_HOME/arduinoPlugin/packages/esp32/hardware/esp32/1.0.4/variants/lolin32</locationURI>
 		</link>
 		<link>
+			<name>libraries/ArduinoJson</name>
+			<type>2</type>
+			<locationURI>ECLIPSE_HOME/arduinoPlugin/libraries/ArduinoJson/6.13.0</locationURI>
+		</link>
+		<link>
 			<name>libraries/ArduinoOTA</name>
 			<type>2</type>
 			<locationURI>ECLIPSE_HOME/arduinoPlugin/packages/esp32/hardware/esp32/1.0.4/libraries/ArduinoOTA</locationURI>
@@ -80,6 +85,11 @@
 			<name>libraries/OneWire</name>
 			<type>2</type>
 			<location>C:/Users/pravoj01/Documents/Arduino/libraries/OneWire</location>
+		</link>
+		<link>
+			<name>libraries/UniversalTelegramBot</name>
+			<type>2</type>
+			<locationURI>ECLIPSE_HOME/arduinoPlugin/libraries/UniversalTelegramBot/1.3.0</locationURI>
 		</link>
 		<link>
 			<name>libraries/Update</name>

@@ -1,17 +1,23 @@
 #include "Arduino.h"
 
+//TODO:
+//#include "soc/soc.h"
+//#include "soc/rtc_cntl_reg.h"
+
 #include "libraries/WiFiManager/src/WiFiManager.h"
 
 #include <WiFiClientSecure.h>
-#include "libraries/UniversalTelegramBot.h"
+//#include "libraries/UniversalTelegramBot.h"
+#include <UniversalTelegramBot.h>
+//#include "libraries/TelegramCertificate.h"
 //#define BOTtoken "XXXXXXXXX:XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX"
-//#define BOTtoken "638106120:AAEberBSptAq8pgbEG86_zJj2uwssD7YuLM"
+//#define BOTtoken "1810161402:AAHkQ4VhJmWGgcNC9XGtQEgz53ZJ2Zb-SR8"
 
 char botChatId[32];
 char lastBotChatId[32];
 char botToken[56];
 WiFiClientSecure client;
-UniversalTelegramBot bot;
+UniversalTelegramBot bot(botToken, client);
 
 //#define DRD_TIMEOUT 10
 //#define DRD_ADDRESS 4
@@ -774,6 +780,9 @@ bool connectWiFi() {
 // setup
 /////////////////////////////////
 void setup() {
+	//TODO:
+	//WRITE_PERI_REG(RTC_CNTL_BROWN_OUT_REG, 0); //disable brownout detector
+
 	Serial.begin(115200);
 	Serial.print(F("\n\n"));
 	Serial.println(F("ESPMONITOR"));
@@ -1081,7 +1090,13 @@ void setup() {
 	Serial.println(botToken);
 	Serial.print(F("CHATID:"));
 	Serial.println(botChatId);
-	bot.setApi(botToken, client);
+
+	//client.setCACert(TELEGRAM_CERTIFICATE_ROOT);
+	//client.setInsecure();
+	//bot._debug = true;
+	//bot.setApi(botToken, client);
+	bot.updateToken(botToken);
+
 
 #ifdef MQTT
 	mqttClient.setCallback(receivedCallback);
